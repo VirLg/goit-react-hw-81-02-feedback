@@ -1,23 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import { Component } from 'react';
+import TextConent from 'components/TextContent/TextConent';
+import StatisticElement from 'components/StatisticElement/StatisticElement';
 
 class Statistic extends Component {
+  state = {
+    good: null,
+    neutral: null,
+    bad: null,
+  };
+
+  // handleSubmit = evt => {
+  //   console.log(evt.target.name);
+  // };
+
   handleClick = evt => {
-    console.log(evt.target.name);
+    // console.log(evt.target.name);
+    return this.setState(prevState => ({
+      [evt.target.name]: prevState[evt.target.name] + 1,
+    }));
   };
   render() {
     return (
       <>
-        <button type="button" name="good" onClick={this.handleClick}>
-          Good
-        </button>
-        <button type="button" name="neutral" onClick={this.handleClick}>
-          Neutral
-        </button>
-        <button type="button" name="bad" onClick={this.handleClick}>
-          Bad
-        </button>
+        <TextConent props={this.state} />
+        <StatisticElement props={this.handleClick} />
       </>
     );
   }
