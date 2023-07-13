@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from '@testing-library/react';
 
-const TextConent = ({ props: { good, neutral, bad } }) => {
-  console.log(good);
+const TextConent = ({ props, summ, positiv }) => {
+  console.log(summ);
+  const { good, neutral, bad, total } = props;
   return (
     <>
       <h1>Statistics</h1>
-
-      <p>
+      <h2>
         Good: <span>{good}</span>
-      </p>
-      <p>
+      </h2>
+      <h2>
         Neutral: <span>{neutral}</span>
-      </p>
-
-      <p>
+      </h2>
+      <h2>
         Bad: <span>{bad}</span>
-      </p>
+      </h2>
+      <br />
+      <h2>Total: {summ}</h2>
+
+      <h2>positivePercentage: {positiv} %</h2>
     </>
   );
 };
